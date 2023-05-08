@@ -53,16 +53,18 @@ class UserRepository
      *
      * @param array $joins Array of join
      *  @param array $conditions Array of conditions
+     *@param array select Array of selected element
      * @param array $relations  An array of relations
      *
      * @return Collection| A collection of model
      */
-    public function joins(array $joins, array $conditions, array $relations = [])
+     public function joins(array $joins, array $conditions, array $relations = [],array $select)
     {
         foreach ($joins as $joinarray) {
-            $query = $this->model->with($relations)->join($joinarray[0], $joinarray[1], $joinarray[2], $joinarray[3]);
+           $query= $this->model->join($joinarray[0], $joinarray[1], $joinarray[2], $joinarray[3]);
         }
-        $query->where($conditions);
+        $query->with($relations);
+        $query->where($conditions)->select($select);
 
         return $query->get();
     }
