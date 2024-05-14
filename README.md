@@ -1,5 +1,5 @@
 # laravel_reposirory_functions
-A Laravel projects who contain somethings functions to help to where testables repository functions
+A Laravel projects which contain a few functions to help to write testables repository functions
 
 
 
